@@ -11,21 +11,29 @@ import co.edu.unbosque.controller.Controller;
 public class View extends JFrame{
 
 	public static final long serialversionUID = 1L;
-	private JLabel lb1, lb2, lb3;
-	private JTextField txt1, txt2, txt3, txtinformacion;
+	private JLabel lb1, lb2, lb3, titulo;
+	private JTextField txt1, txt2, txt3;
+	private JTextArea txtinformacion;
 	private JButton btinsertar, btlistar;
+	private JScrollPane scroll;
 	public static final String  INSERTAR  ="Insertar";
 	public static final String  LISTAR  ="Listar";
 	
 	public View(Controller control) {
 		setSize(400,400);
 		setResizable(false);
-		setTitle("Programa Serialización");
+		setTitle("Sala");
+		setBackground(Color.black);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setLayout(null);
 		setLocationRelativeTo(null);
 		
 		Font font = new Font("Arial", 1, 15);
+		Font font2 = new Font("Times New Roman", 1, 28);
+		titulo = new JLabel("SALA");
+		titulo.setBounds(160, 0, 100, 45);
+		titulo.setFont(font2);
+		titulo.setForeground(Color.GRAY);
 		lb1 = new JLabel("ID");
 		lb1.setBounds(75, 15, 100, 100);
 		lb1.setFont(font);
@@ -56,11 +64,16 @@ public class View extends JFrame{
 		btlistar.setActionCommand(LISTAR);
 		btlistar.setBounds(205, 150,100, 35);
 		
-		txtinformacion = new JTextField("");
+		txtinformacion = new JTextArea();
+		scroll = new JScrollPane(txtinformacion);
+		scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+		scroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+		scroll.setBounds(25,200, 350, 150);
 		txtinformacion.setForeground(Color.black);
 		txtinformacion.setBackground(Color.white); 
-		txtinformacion.setBounds(45,200, 300, 150);
+		txtinformacion.setEditable(false);
 		
+		add(titulo);
 		add(lb1);
 		add(lb2);
 		add(lb3);
@@ -69,9 +82,16 @@ public class View extends JFrame{
 		add(txt3);
 		add(btinsertar);
 		add(btlistar);
-		add(txtinformacion);
+		add(scroll);
+		
+		btinsertar.addActionListener(control);
+		btlistar.addActionListener(control);
 	}
 
+	public void devolverInformacion(String mensaje) {
+		JOptionPane.showMessageDialog(null, mensaje);
+	}
+	
 	public JLabel getLb1() {
 		return lb1;
 	}
@@ -120,13 +140,6 @@ public class View extends JFrame{
 		this.txt3 = txt3;
 	}
 
-	public JTextField getTxtinformacion() {
-		return txtinformacion;
-	}
-
-	public void setTxtinformacion(JTextField txtinformacion) {
-		this.txtinformacion = txtinformacion;
-	}
 
 	public JButton getBtinsertar() {
 		return btinsertar;
@@ -142,6 +155,22 @@ public class View extends JFrame{
 
 	public void setBtlistar(JButton btlistar) {
 		this.btlistar = btlistar;
+	}
+
+	public JTextArea getTxtinformacion() {
+		return txtinformacion;
+	}
+
+	public void setTxtinformacion(JTextArea txtinformacion) {
+		this.txtinformacion = txtinformacion;
+	}
+
+	public JScrollPane getScroll() {
+		return scroll;
+	}
+
+	public void setScroll(JScrollPane scroll) {
+		this.scroll = scroll;
 	}
 
 	

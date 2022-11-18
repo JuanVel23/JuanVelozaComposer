@@ -1,29 +1,64 @@
 package co.edu.unbosque.model;
 
 import java.io.Serializable;
-import java.util.*;
 
+public class EstudianteDTO implements Serializable{
 
-public class EstudianteDTO implements Serializable {
-
-	private List<EstudiantesDAO> estudiantes;
+	public static final long serialVersionUID = 1L;
+	private int id;
+	private String nombre;
+	private String carrera;
 	
-	public EstudianteDTO() {
-		estudiantes = new ArrayList<>();
-	
+	public EstudianteDTO(int id, String nombre, String carrera) {
+		this.id = id;
+		this.nombre = nombre;
+		this.carrera = carrera;
+	}
+
+	/**
+	 * @return the id
+	 */
+	public int getId() {
+		return id;
 	}
 	
-	public void agregarEstudiantes() {
-		EstudiantesDAO estudiante1 = new EstudiantesDAO(15411515, "Camilo", "Derecho");
-		EstudiantesDAO estudiante2 = new EstudiantesDAO(584915445, "Jorge", "Contaduria");
-		EstudiantesDAO estudiante3 = new EstudiantesDAO(15411515, "Chayanne", "Musica");
-		estudiantes.add(estudiante1);
-		estudiantes.add(estudiante2);
-		estudiantes.add(estudiante3);
+	public String toString() {
+		return "ID = " + id + ", Nombre = " + nombre + ", Carrera = " + carrera + "\n";
 	}
-	
-	public List<EstudiantesDAO> obtenerEstudiantes(){
-		return estudiantes;
+
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	/**
+	 * @return the nombre
+	 */
+	public String getNombre() {
+		return nombre;
+	}
+
+	/**
+	 * @param nombre the nombre to set
+	 */
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	/**
+	 * @return the carrera
+	 */
+	public String getCarrera() {
+		return carrera;
+	}
+
+	/**
+	 * @param carrera the carrera to set
+	 */
+	public void setCarrera(String carrera) {
+		this.carrera = carrera;
 	}
 	
 	

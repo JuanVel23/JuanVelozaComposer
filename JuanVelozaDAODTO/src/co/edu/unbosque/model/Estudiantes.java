@@ -1,32 +1,35 @@
 package co.edu.unbosque.model;
 
+import java.util.ArrayList;
+
 import co.edu.unbosque.model.persistance.EstudiantesFile;
 
 public class Estudiantes {
 
-	private EstudianteDTO estdto;
-	private EstudiantesDAO estdao;
+	private ArrayList<EstudianteDTO> estdto;
+	private EstudianteDAO estdao;
 	private EstudiantesFile ef;
 	
 	public Estudiantes() {
-		this.estdto = estdto;
-		this.ef = ef;
-		this.estdao= estdao;
+		ef = new EstudiantesFile();
+		estdto = new ArrayList<EstudianteDTO>();
+		estdto = ef.leerEstudiantes();
+		estdao = new EstudianteDAO(ef);
 	}
 
-	public EstudianteDTO getEstdto() {
+	public ArrayList<EstudianteDTO> getEstdto() {
 		return estdto;
 	}
 
-	public void setEstdto(EstudianteDTO estdto) {
+	public void setEstdto(ArrayList<EstudianteDTO> estdto) {
 		this.estdto = estdto;
 	}
 
-	public EstudiantesDAO getEstdao() {
+	public EstudianteDAO getEstdao() {
 		return estdao;
 	}
 
-	public void setEstdao(EstudiantesDAO estdao) {
+	public void setEstdao(EstudianteDAO estdao) {
 		this.estdao = estdao;
 	}
 
@@ -37,6 +40,6 @@ public class Estudiantes {
 	public void setEf(EstudiantesFile ef) {
 		this.ef = ef;
 	}
-	
+
 	
 }
